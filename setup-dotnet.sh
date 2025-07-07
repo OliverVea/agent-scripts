@@ -1,11 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if ! command -v dotnet &>/dev/null; then
-  echo "Installing Bun…"
-  curl -fsSL https://bun.sh/install | bash
-  export PATH="$HOME/.bun/bin:$PATH"
+usage() {
+  echo "Usage: $0 DOTNET_SDK_VERSION" >&2
+  echo "Installs the specified version of the .NET SDK." >&2
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+  usage
+  exit 0
 fi
+
+if [ -z "${1:-}" ]; then
+  usage
+  exit 1
+fi
+
+DOTNET_SDK_VERSION=$1
 
 wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb \
      -O packages-microsoft-prod.deb

@@ -9,8 +9,7 @@ Installs Docker (if needed) and the [`act`](https://github.com/nektos/act) binar
 
 Usage:
 ```bash
-# specify the act version to install
-ACT_VERSION=0.2.57 ./setup-act.sh
+./setup-act.sh 0.2.57
 ```
 
 ### `setup-bun.sh`
@@ -26,7 +25,7 @@ Installs the .NET SDK via the Microsoft package repositories.
 
 Usage:
 ```bash
-DOTNET_SDK_VERSION=8.0 ./setup-dotnet.sh
+./setup-dotnet.sh 8.0
 ```
 
 ## Contributing
