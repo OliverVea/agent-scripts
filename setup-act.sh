@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+usage() {
+  echo "Usage: $0 ACT_VERSION" >&2
+  echo "Installs Docker and the act CLI using the specified version." >&2
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+  usage
+  exit 0
+fi
+
+if [ -z "${1:-}" ]; then
+  usage
+  exit 1
+fi
+
+ACT_VERSION=$1
+
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
 case "$ARCH" in
